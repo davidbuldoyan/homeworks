@@ -1,114 +1,81 @@
-// homewor 7
-console.log("1. Ունենք զանգված կազմված բացասական, դրական թվերից և 0-ից: Գրել ծրագիր, որը կվերադասավորի մեծից փոքր նվազող թվեր ունեցող զանգված:");
+//homework 8
+console.log("1.Գեներացնել պատահական 5 թիվ 0-10 տիրույթում այնպես, որ 0-5 տիրույթի թվերը կլորանան դեպի վերև, իսկ մյուսները դեպի ներքև և արտածելպատահական թիվն ու կլորացված թիվը:");
 alert("1.");
-function arrSort(){
-let arr = [];
-let length = +prompt("enter arr length");
-for(let i = 0; i < length; i++){
-    arr[i] = +prompt(`enter ${i + 1} member of array`);
+let randomNumber;
+let roundedNumber;
+for(let i = 0; i < 5; i++){
+    randomNumber = Math.random() * 10;
+    if(randomNumber < 5){
+        roundedNumber = Math.ceil(randomNumber);
+        console.log(`random number ${randomNumber}, rounded number ${roundedNumber}`);
+    }else{
+        roundedNumber = Math.floor(randomNumber);
+        console.log(`random number ${randomNumber}, rounded number ${roundedNumber}`);
+    }
 }
-for(let j = 0; j < arr.length - 1; j++){
-    if(arr[j] < arr[j + 1]){
-        arr[j] = arr.splice(j + 1, 1, arr[j])[0];
-        j = -1;
+
+
+
+console.log("2.Գրել ֆունկցիա որը տրված բառի վերջին տառը կդարդձնի մեծատառ:");
+alert("2.")
+let word = prompt("enter the word");
+function capitalizeLastLetter(word) {
+    const index = word.length - 1;
+    const lastIndex = word.charAt(index);
+    const newWord = word.slice(0, index) + lastIndex.toUpperCase();
+    return newWord;
+}
+console.log(capitalizeLastLetter(word));
+
+
+
+console.log(`3.Գրել ֆ-ա որը մուտքագրված բառից կարտածի միայն զույգ ինդեքսով տառերը: Օրինակ՝ ինդեքս -ից կմնա իդք:`);
+let word2 = prompt("enter the word");
+function zuygIndex(word2) {
+    let arrIndexOfWord2 = [];
+    for(let i = 0; i < word2.length; i++){
+        if(i % 2 == 0){
+            arrIndexOfWord2.push(word2.charAt(i));
         }
     }
-    return arr;
+    return arrIndexOfWord2;
 }
-console.log(arrSort());
+console.log(zuygIndex(word2));
 
 
 
-console.log(" 2. Գրել ծրագիր, որը զանգվածից կընտրի որևէ անդամ, պատահական սկզբունքով:");
-alert("2.");
-let arr = [];
-let lengthOfArr = +prompt("enter arr length");
-for(let i = 0; i < lengthOfArr; i++){
-    arr[i] = +prompt(`enter ${i + 1} member of array`);
+console.log(`4.Գրել ծրագիր, որը կգեներացնի 5 նիշանոց կոդ տառերից և թվերից կազմված, և եթե այցելուն prompt պատուհանում ճիշտ հավաքի այդ կոդը և հաստատի, ապա alert անի ճիշտ է, այլապես alert անի "սխալ է":`);
+let code = '';
+const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+for (let i = 0; i < 5; i++) {
+  code += characters.charAt(Math.floor(Math.random() * characters.length));
 }
-function arrRandomElement (array) {
-let random = Math.floor(Math.random() * arr.lengthOfArr);
-return random;
+const input = prompt(`Enter the code: ${code}`);
+if (input === code) {
+  alert('Correct');
+} else {
+  alert('Incorrect');
 }
-console.log(arrRandomElement(arr));
 
 
 
-console.log(" 3. Գրել ծրագիր, որը թույլ կտա մուտքագրել 10 տարբեր արժեքներ, արժեքներից ստանալ 2 զանգված, որոնցից առաջինում կլինեն այն արժեքները, որոնք միաժամանակ և դրական են և զույգ, երկրորդում կլինեն այն արժեքները, որոնք առանք 7-ի բազմապատիկ են:");
-alert("3.");
-let arr10 = [];
-let arrZuygDrakan = [];
-let arrArnc7 = [];
-for(let i = 0; i < 10; i++){
-    arr10[i] = +prompt(`enter ${i + 1} member of arr`);
-    if(arr10[i] > 0 && arr10[i] % 2 == 0){
-        arrZuygDrakan.push(arr10[i]);
-    }else if(arr10[i] % 7 != 0){
-        arrArnc7.push(arr10[i]);
-    }
-}
-console.log("zuyg ev drakan" ,arrZuygDrakan);
-console.log("aranc 7-i bazmapatik" ,arrArnc7);
- 
-
-
-
-console.log("4. Գրել ծրագիր, որը ավելացնում է 2-րդ զանգվածը առաջինի մեջ ուղիղ մեջտեղից:");
-alert("4.");
-let arrUser = [];
-const arrMutq = [10, 20, 30, 40, 50];
-let arrTemp = [];
-let length = +prompt("enter array length");
-for(let i = 0; i < length; i++ ){
-    arrUser[i] = +prompt(`enter ${i + 1} member of array`);
-}
-let arrLength = Math.floor(arrUser.length / 2);
-for(let j = 0; j < arrLength; j++){
-    arrTemp[j] = arrUser.shift(j);
-} 
-for(let k = 0; k < arrMutq.length; k++){
-    arrTemp.push(arrMutq[k]);
-}
-for(let x = 0; x < arrUser.length; x++){
-    arrTemp.push(arrUser[x]);
-}
-console.log("new array" ,arrTemp);
-
-
-
-console.log("5.Գրել ծրագիր, որը տրված զանգվածի ամեն մի էլեմենտից կստանա նոր զանգված, որի էլեմենտների գումարը հավասար է տրված թվին: Օր. [4,10,9] զանգվածից կստանա [[4,4],[5,5],[4,5]] զանգվածը:");
-alert("5.");
-let arrExp = [4, 10, 9];
-let arrNewTemp = [];
-for(let i = 0; i < 3; i++){
-    arrNewTemp[i] = [];
-    if(arrExp[i] % 2 == 0){
-        for(let j = 0; j < 2; j++){
-        arrNewTemp[i][j] = arrExp[i] / 2; 
-        }
-    }else {
-        for(let j = 0; j < 2; j++){
-            arrNewTemp[i][j] = Math.floor(arrExp[i] / 2) + j; 
-            }
-    }
-}
-console.log(arrNewTemp);
-
-
-
-console.log("6. Օգտագործելով ռեկուրսիա, տպել (a,b) միջակայքի բոլոր զույգ թվերը հետադարձ կարգով:");
-const start = +prompt("enter start");
-const end = +prompt("enter end");
-let arr2 = [];
-function mijakayq(start, end) {
-    if(start > end) {
-        return error;
-    }else if(start == end) {
-        return;
-    }else if(end % 2 == 0) {
-        arr2.push(end);
-    }
-    mijakayq(start, end - 1);
-    return arr2;
-}
-console.log(mijakayq(start, end));
+// console.log(`5.Ունենք 2 զանգված, գրել ծրագիր, որը կվերադարձնի 'Yes' եթե քիչ էլէմենտներով զանգվածը պարունակվում է մեծ զանգվածի մեջ և 'NO' հակառակ դեպքում: Օր. [9,9,8] և [8,9] վերադարձնում է 'YES'.`);
+// function checkArrayContains(smallArray, largeArray) {
+//     for (let i = 0; i <= largeArray.length - smallArray.length; i++) {
+//       let isMatch = true;
+//       for (let j = 0; j < smallArray.length; j++) {
+//         if (smallArray[j] !== largeArray[i+j]) {
+//           isMatch = false;
+//           break;
+//         }
+//       }
+//       if (isMatch) {
+//         return "Yes";
+//       }
+//     }
+//     return "No";
+//   }
+//   const arr1 = [9, 9, 8];
+//   const arr2 = [8, 9];
+//   console.log(checkArrayContains(arr2, arr1)); 
+  
